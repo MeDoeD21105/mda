@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Post (models.Model):
@@ -10,3 +11,11 @@ class Post (models.Model):
     content = models.TextField()
     create_data = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete = models.CASCADE)
+    
+    def get_absolute_url(self):
+        return reverse("Post", kwargs={"post_title":self.title})
+    
+    def __str__(self) -> str:
+        return self.title
+    
+    
