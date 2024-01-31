@@ -12,13 +12,17 @@
 
 
     {% for i in post%}
-    <li><h1>{{i.title}}</h1s></li><p></p>
+    <li><h1>{{ i.title }}</h1></li><p></p>
 
-    <li></h2>{{i.content}}</h2></li><p></p>
+    <li></h2>{{ i.content|linebreaks|truncatewords:50 }}</h2></li><p></p>
     
-    <li></h2>{{i.create_data}}</h2></li><p></p>
+    <li></h2>{{ i.create_data }}</h2></li><p></p>
     
-    <li></h2>{{i.author}}</h2></li>
+    <li></h2>{{ i.author }}</h2></li><p></p>
+
+    {% if i.photo %}
+        <img src="{{ i.photos.url }}" alt="{{ i.title }}" height="550" width="auto">
+        {% endif %}
     {% endfor %}
         <hr>
 </body>
