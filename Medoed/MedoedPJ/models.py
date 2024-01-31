@@ -11,6 +11,7 @@ class Post (models.Model):
     content = models.TextField()
     create_data = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete = models.CASCADE)
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/",blank=True)
     
     
     
